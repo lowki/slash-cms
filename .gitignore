@@ -5,3 +5,5 @@
 sl_config.php
 .dev
 sftp-config.json
+cache/
+medias/
