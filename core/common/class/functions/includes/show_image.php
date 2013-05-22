@@ -172,7 +172,9 @@ function resize_image_or_cache ($source,$width="auto",$height="auto",$format="au
 		if(!file_exists($cache_root.$cache) || $force){
 			
 			if ($width == "auto" && $height== "auto") {
-				$img_dest=imagecreatetruecolor($i_size[0],$i_size[1]); 
+				$img_dest=imagecreatetruecolor($i_size[0],$i_size[1]);
+				imagealphablending($img_dest,false);
+				imagesavealpha($img_dest, true);
 				ImageCopyResampled($img_dest, $img_src, 0, 0, 0, 0,$i_size[0], $i_size[1], $i_size[0], $i_size[1]);
 			}
 			
@@ -180,6 +182,8 @@ function resize_image_or_cache ($source,$width="auto",$height="auto",$format="au
 
 				//$img_dest=imagecreatetruecolor($width,$height);	
 				$img_dest=imagecreatetruecolor($f_size[0],$f_size[1]);
+				imagealphablending($img_dest,false);
+				imagesavealpha($img_dest, true);
 				ImageCopyResampled($img_dest, $img_src, 0, 0, 0, 0,$f_size[0], $f_size[1], $i_size[0], $i_size[1]);
 			}
 			
